@@ -1,5 +1,8 @@
 <?php
 include_once(dirname(__FILE__) . "/../../cabecera.php");
+define("NUME" ,25);
+const NUME1=56;
+
 //controlador
 //dibuja la plantilla de la vista
 inicioCabecera("APLICACION PRIMER TRIMESTRE");
@@ -46,8 +49,130 @@ function cuerpo()
 
         //$real=12 * "hola";
 
-        echo "el numero es: $var1<br>";
-        echo 'el numero es: $var1<br>';
+        echo "el numero es: \$var1 es {$var1}<br>".PHP_EOL;
+        echo 'el numero es: $var1<br>'.PHP_EOL;
+
+        $real=null;
+
+        echo "el numero real $real";
+
+        $var=125;
+        $tipo= gettype($var);
+        $var=(string)$var;
+        $tipo= gettype($var);
+        $var=settype($var,"double");
+        $tipo= gettype($var);
+        $var=intval($var);
+        $tipo= gettype($var);
+
+
+    $var ="0"; 
+    if ("$var")
+        $cadena="var no vale false";
+
+    $var ="0";
+    if ("0000")
+        $cadena="var no vale false";
+
+     $var ="";
+    if ("$var")
+        $cadena="var no vale false";
+
+     $var =0;
+    if ("$var")
+        $cadena="var no vale false";
+
+     $var =1;
+    if ("$var")
+        $cadena="var no vale false";
+
+    $var=1+true;
+    $var=1+1.5;
+    $var=1+"1hola";
+    $var=1+"1.5hola";
+    //$var=1+"hola";
+    //$var=1+[];
+    $aux=125;
+    $var="hola ".$aux;
+    $aux=true;
+    $var="hola ".$aux;
+    $aux=[];
+    $var="hola ".$aux;
+    $aux="adios";
+    $var="hola ".$aux;
+
+    //referencias:
+    $var1=100;
+    $var2=$var1;
+    $var3=&$var1;
+    $var2=150;
+    $var3=200;
+
+    unset($var3);
+
+    $var1+=NUME;
+
+    $var1+=NUME1;
+
+    //OPERADORES
+    $var=15/2;
+
+    if ("25"==25)
+        $var="iguales";
+
+    if ("25"===25)
+        $var="iguales";
+
+    if ("25"!=25)
+        $var="distintos";
+
+    if ("25"!==25)
+        $var="distintos";
+
+    $var=14>25;
+    $var=14<25;
+    $var=14<=>25;
+
+    if (isset($var3))
+        $var=$var3;
+        elseif (isset($mivar))
+                $var=$var2;
+            else
+                $var=27;
+
+    $var=$var3??$mivar??27;
+
+    $var=0b11111;
+    $var=$var>>1;
+    $var=$var<<1;
+
+    $var=0b1010 & 0b0101;
+    $var=0b1010 | 0b0101;
+
+    $var=7;
+    if ($var==1)
+            $cadena="uno";
+        elseif ($var==2)
+                $cadena="dos";
+            else 
+                $cadena="otro";
+
+    $var=1;
+    switch ($var)
+    {
+        case 1:$cadena="uno";
+                break;
+        case 2:$cadena="dos";
+                break;
+        default:$cadena="otro";
+
+    }
+
+
+
+
+
+
 
 
 
