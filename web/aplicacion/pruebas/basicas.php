@@ -18,7 +18,7 @@ function cuerpo()
 ?>
     <br><br>esto es html
     <?php 
-        echo "kldj";
+        echo "klMKLM,L,LÑ,L,L,Ldj";
     ?>
   
 <?php
