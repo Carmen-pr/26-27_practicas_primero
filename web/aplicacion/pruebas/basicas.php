@@ -18,7 +18,7 @@ function cuerpo()
 ?>
     <br><br>esto es html
     <?php 
-        echo "klñfffdj";
+        echo "kldj";
     ?>
   
 <?php
