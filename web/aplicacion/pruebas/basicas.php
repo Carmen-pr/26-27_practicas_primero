@@ -97,7 +97,7 @@ function cuerpo()
     $aux=true;
     $var="hola ".$aux;
     $aux=[];
-    $var="hola ".$aux;
+    //$var="hola ".$aux;
     $aux="adios";
     $var="hola ".$aux;
 
