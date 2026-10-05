@@ -67,6 +67,8 @@ function inicioCuerpo($cabecera)
                 <ul>
                     <li><a href="/index.php">Inicio</a></li>
                     <li><a href="/aplicacion/pruebas/basicas.php">Ejemplos Basicos</a></li>
+                    <li><a href="/aplicacion/relacion1/relacion1.php">Relacion1</a></li>
+
 <!-- Lo que se cambia en la plantilla se queda en la plantilla, no se puede cambiar desde el controlador -->
                  </ul> 
                 
