@@ -48,7 +48,7 @@ function finCabecera()
 <?php   
 }
 
-function inicioCuerpo(string $cabecera, array $ubicacion)
+function inicioCuerpo(string $cabecera, array $ubicacion=[])
 {
     global $acceso;
 
