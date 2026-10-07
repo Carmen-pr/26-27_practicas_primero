@@ -8,7 +8,7 @@ const NUME1=56;
 inicioCabecera("APLICACION PRIMER TRIMESTRE");
 cabecera();
 finCabecera();
-inicioCuerpo("pruebas basicas");
+inicioCuerpo("pruebas basicas", []);
 cuerpo(); //llamo a la vista
 finCuerpo();
 // **********************************************************
@@ -24,7 +24,6 @@ function cuerpo()
     $miArray[7]=1234;
    //miArray['nueva']=54;
     $miArray[]=54;
-
 
 
     $total=$miArray[6];

@@ -5,7 +5,7 @@ function paginaError($mensaje)
   header("HTTP/1.0 404 $mensaje");
   inicioCabecera("PRACTICA");
   finCabecera();
-  inicioCuerpo("ERROR");
+  inicioCuerpo("ERROR",[]);
   echo "<br />\n";
   echo $mensaje;
   echo "<br />\n";
@@ -48,7 +48,7 @@ function finCabecera()
 <?php   
 }
 
-function inicioCuerpo($cabecera)
+function inicioCuerpo(string $cabecera, array $ubicacion)
 {
     global $acceso;
 
@@ -72,6 +72,33 @@ function inicioCuerpo($cabecera)
 <!-- Lo que se cambia en la plantilla se queda en la plantilla, no se puede cambiar desde el controlador -->
                  </ul> 
                 
+            </div>
+            <div id="barraUbicacion">
+            <?php  
+            
+            if ($ubicacion){
+                    foreach($ubicacion as $elemento)
+                    {
+                        if (isset($elemento["ENLACE"])){
+                            echo "<a href='{$elemento["ENLACE"]}'>";
+                        }
+                        echo $elemento ["TEXTO"]; 
+
+                        if (isset($elemento["ENLACE"]))
+                            {
+                                echo "</a";
+                            }
+
+                        if (isset($elemento["ADICIONAL"]))
+                                echo $elemento["ADICIONAL"];
+                               else 
+                                echo "&nbsp;&nbsp;";    
+                    }
+                }
+
+            
+            ?>
+
             </div>
             
             <div>
