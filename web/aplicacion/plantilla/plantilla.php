@@ -5,7 +5,7 @@ function paginaError($mensaje)
   header("HTTP/1.0 404 $mensaje");
   inicioCabecera("PRACTICA");
   finCabecera();
-  inicioCuerpo("ERROR",[]);
+  inicioCuerpo("ERROR");
   echo "<br />\n";
   echo $mensaje;
   echo "<br />\n";
@@ -66,39 +66,63 @@ function inicioCuerpo(string $cabecera, array $ubicacion=[])
             <div id="barraMenu">
                 <ul>
                     <li><a href="/index.php">Inicio</a></li>
-                    <li><a href="/aplicacion/pruebas/basicas.php">Ejemplos Basicos</a></li>
+                    <li><a href="/aplicacion/pruebas/index.php">Ejemplos Basicos</a></li>
                     <li><a href="/aplicacion/relacion1/relacion1.php">Relacion1</a></li>
-
-<!-- Lo que se cambia en la plantilla se queda en la plantilla, no se puede cambiar desde el controlador -->
                  </ul> 
                 
             </div>
             <div id="barraUbicacion">
-            <?php  
-            
-            if ($ubicacion){
-                    foreach($ubicacion as $elemento)
+                  <?php
+                  if ($ubicacion)
                     {
-                        if (isset($elemento["ENLACE"])){
-                            echo "<a href='{$elemento["ENLACE"]}'>";
-                        }
-                        echo $elemento ["TEXTO"]; 
+                        
 
-                        if (isset($elemento["ENLACE"]))
+                        foreach($ubicacion as $elemento)
                             {
-                                echo "</a";
+                                if (isset($elemento["ENLACE"]))
+                                    {
+                                        echo "<a href='{$elemento["ENLACE"]}' >";
+                                    }
+                                echo $elemento["TEXTO"];
+                               
+
+                                if (isset($elemento["ENLACE"]))
+                                    {
+                                        echo "</a>";
+                                    }
+
+                                 if (isset($elemento["ADICIONAL"]))
+                                            echo $elemento["ADICIONAL"];
+                                           else
+                                            echo "&nbsp;&nbsp;";
+                                    
+                                //otra solucion
+/*                                if (isset($elemento["ENLACE"]))
+                                    {
+                                        echo "<a href='{$elemento["ENLACE"]}' >";
+                                        echo $elemento["TEXTO"];
+                                        if (isset($elemento["ADICIONAL"]))
+                                            echo $elemento["ADICIONAL"];
+                                           else
+                                            echo "&nbsp;&nbsp;";
+                                        echo "</a>";
+                                    }
+                                   else
+                                    {
+                                        echo $elemento["TEXTO"];
+                                        if (isset($elemento["ADICIONAL"]))
+                                            echo $elemento["ADICIONAL"];
+                                           else
+                                            echo "&nbsp;&nbsp;";
+                                 
+                                    }
+*/                                
+
                             }
-
-                        if (isset($elemento["ADICIONAL"]))
-                                echo $elemento["ADICIONAL"];
-                               else 
-                                echo "&nbsp;&nbsp;";    
                     }
-                }
 
-            
-            ?>
 
+                    ?>
             </div>
             
             <div>
@@ -114,7 +138,7 @@ function finCuerpo()
             <footer>
                 <hr width="90%"  />  
                 <div>
-                    &copy; Copyright  by Carmen
+                    &copy; Copyright  by Profesor
                 </div>
             </footer>
         </div>
