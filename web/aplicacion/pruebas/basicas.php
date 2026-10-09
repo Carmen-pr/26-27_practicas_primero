@@ -37,7 +37,19 @@ function cuerpo()
 ?>
     <br><br>esto es html // esto es un comentario;
     <?php 
-        echo "klñfffdj"; 
+        echo "klñfffdj"."<br>";
+
+        
+        echo $cadena=date("d/m/Y H:i:s")."<br>";
+        
+       
+        $hoy = new DateTime();
+        $cadena=$hoy->format("d/m/Y H:i:s")."<br>";
+
+        //Le sumo 2 dias, 15 horas, 30 minutos
+        $hoy->add(new DateInterval(("P2DT15H30M")));
+        $cadena=$hoy->format("d/m/Y H:i:s")."<br>";
+
 
         $var1=25;
         $cadena="esto es una cadena";
@@ -104,8 +116,8 @@ function cuerpo()
 
     $var=1+true;
     $var=1+1.5;
-    $var=1+"1hola";
-    $var=1+"1.5hola";
+    //$var=1"1hola";
+    //$var=1+"1.5hola";
     //$var=1+"hola";
     //$var=1+[];
     $aux=125;

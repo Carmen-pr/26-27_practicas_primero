@@ -22,6 +22,7 @@ body {
 #cabecera #titulo{
     font-size: 1.3em;
     font-style: italic;
+    
 }
 
 #barraUbicacion{
@@ -72,10 +73,8 @@ body {
     
 }
 
-/*.tabla tr.impar{
-    
-}
-*/
+/*.tabla tr.impar{   
+}*/
 
 #pie{
     background-color: #81e714;
