@@ -138,7 +138,7 @@ function finCuerpo()
             <footer>
                 <hr width="90%"  />  
                 <div>
-                    &copy; Copyright  by Profesor
+                    &copy; Copyright  by Carmen
                 </div>
             </footer>
         </div>

@@ -1,8 +1,14 @@
 <?php
 include_once(dirname(__FILE__) . "/../../cabecera.php");
 //controlador
-/* ejercicio6.php
-   Simula un foreach de dos formas: con las funciones de recorrido
+
+$ubicacion = [
+    ["TEXTO" => "Inicio", "ENLACE" => "/index.php", "ADICIONAL" => " &gt;&gt; "],
+    ["TEXTO" => "Relación 1", "ENLACE" => "relacion1.php", "ADICIONAL" => " &gt;&gt; "],
+    ["TEXTO" => "Ejercicio 6"]
+];
+
+/* Simula un foreach de dos formas: con las funciones de recorrido
    (reset, key, current, next) y con array_keys / array_values. */
 
 
@@ -14,7 +20,7 @@ function obtenerVector() {
 inicioCabecera("APLICACION PRIMER TRIMESTRE");
 cabecera();
 finCabecera();
-inicioCuerpo("Ejercicio 6");
+inicioCuerpo("Ejercicio 6", $ubicacion);
 cuerpo(); //llamo a la vista
 finCuerpo();
 // **********************************************************

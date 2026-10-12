@@ -1,6 +1,15 @@
 <?php
 include_once(dirname(__FILE__) . "/../../cabecera.php");
 //controlador
+
+$ubicacion = [
+    ["TEXTO" => "Inicio", "ENLACE" => "/index.php", "ADICIONAL" => " &gt;&gt; "],
+    ["TEXTO" => "Relación 1", "ENLACE" => "relacion1.php", "ADICIONAL" => " &gt;&gt; "],
+    ["TEXTO" => "Ejercicio 3"]
+];
+
+
+
 //Crea el mismo array de tres formas distintas y lo muestra con foreach.
 function obtenerArrays() {
 
@@ -49,7 +58,7 @@ function obtenerArrays() {
 inicioCabecera("APLICACION PRIMER TRIMESTRE");
 cabecera();
 finCabecera();
-inicioCuerpo("Ejercicio 3");
+inicioCuerpo("Ejercicio 3", $ubicacion);
 cuerpo(); //llamo a la vista
 finCuerpo();
 // **********************************************************

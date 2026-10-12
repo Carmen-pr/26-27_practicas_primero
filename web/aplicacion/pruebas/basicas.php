@@ -5,6 +5,8 @@ const NUME1=56;
 
 //controlador
 
+
+
 $barra=[
     [
         "TEXTO"=> "inicio", 
@@ -12,7 +14,8 @@ $barra=[
     ],
         [
         "TEXTO"=> "pruebas",
-        "ENLACE" => "/apicacion/pruebas/index.php",
+        "ENLACE" => "/aplicacion/pruebas/index.php",
+        "TEXTO" => "pruebas", "ENLACE" => "/aplicacion/pruebas/index.php", "ADICIONAL" => " &gt;&gt; "
     ],
         [
         "TEXTO"=> "eje.basicos",

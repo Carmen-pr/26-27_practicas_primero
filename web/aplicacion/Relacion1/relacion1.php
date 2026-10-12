@@ -1,11 +1,18 @@
 <?php
 include_once(dirname(__FILE__) . "/../../cabecera.php");
 //controlador
+
+$ubicacion = [
+    ["TEXTO" => "Inicio", "ENLACE" => "/index.php", "ADICIONAL" => " &gt;&gt; "],
+    ["TEXTO" => "Relación 1"]
+];
+
+
 //dibuja la plantilla de la vista
 inicioCabecera("APLICACION PRIMER TRIMESTRE");
 cabecera();
 finCabecera();
-inicioCuerpo("2DAW APLICACION");
+inicioCuerpo("2DAW APLICACION", $ubicacion);
 cuerpo(); //llamo a la vista
 finCuerpo();
 // **********************************************************

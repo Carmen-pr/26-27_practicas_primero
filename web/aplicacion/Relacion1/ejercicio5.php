@@ -1,6 +1,13 @@
 <?php
 include_once(dirname(__FILE__) . "/../../cabecera.php");
 //controlador
+
+$ubicacion = [
+    ["TEXTO" => "Inicio", "ENLACE" => "/index.php", "ADICIONAL" => " &gt;&gt; "],
+    ["TEXTO" => "Relación 1", "ENLACE" => "relacion1.php", "ADICIONAL" => " &gt;&gt; "],
+    ["TEXTO" => "Ejercicio 5"]
+];
+
 /* Rellena un array con valores de distintos tipos y muestra, según el tipo,
 una información distinta de cada elemento.*/
 
@@ -19,7 +26,7 @@ function obtenerVector() {
 inicioCabecera("APLICACION PRIMER TRIMESTRE");
 cabecera();
 finCabecera();
-inicioCuerpo("Ejercicio 5");
+inicioCuerpo("Ejercicio 5", $ubicacion);
 cuerpo(); //llamo a la vista
 finCuerpo();
 // **********************************************************
