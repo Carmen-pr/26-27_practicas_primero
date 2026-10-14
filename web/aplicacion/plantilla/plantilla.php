@@ -48,7 +48,7 @@ function finCabecera()
 <?php   
 }
 
-function inicioCuerpo($cabecera)
+function inicioCuerpo(string $cabecera, array $ubicacion=[])
 {
     global $acceso;
 
@@ -66,8 +66,64 @@ function inicioCuerpo($cabecera)
             <div id="barraMenu">
                 <ul>
                     <li><a href="/index.php">Inicio</a></li>
+                    <li><a href="/aplicacion/pruebas/index.php">Ejemplos Basicos</a></li>
+                    <li><a href="/aplicacion/relacion1/relacion1.php">Relación 1</a></li>
+                    <li><a href="/aplicacion/relacion2/relacion2.php">Relación 2</a></li>
                  </ul> 
                 
+            </div>
+            <div id="barraUbicacion">
+                  <?php
+                  if ($ubicacion)
+                    {
+                        
+
+                        foreach($ubicacion as $elemento)
+                            {
+                                if (isset($elemento["ENLACE"]))
+                                    {
+                                        echo "<a href='{$elemento["ENLACE"]}' >";
+                                    }
+                                echo $elemento["TEXTO"];
+                               
+
+                                if (isset($elemento["ENLACE"]))
+                                    {
+                                        echo "</a>";
+                                    }
+
+                                 if (isset($elemento["ADICIONAL"]))
+                                            echo $elemento["ADICIONAL"];
+                                           else
+                                            echo "&nbsp;&nbsp;";
+                                    
+                                //otra solucion
+/*                                if (isset($elemento["ENLACE"]))
+                                    {
+                                        echo "<a href='{$elemento["ENLACE"]}' >";
+                                        echo $elemento["TEXTO"];
+                                        if (isset($elemento["ADICIONAL"]))
+                                            echo $elemento["ADICIONAL"];
+                                           else
+                                            echo "&nbsp;&nbsp;";
+                                        echo "</a>";
+                                    }
+                                   else
+                                    {
+                                        echo $elemento["TEXTO"];
+                                        if (isset($elemento["ADICIONAL"]))
+                                            echo $elemento["ADICIONAL"];
+                                           else
+                                            echo "&nbsp;&nbsp;";
+                                 
+                                    }
+*/                                
+
+                            }
+                    }
+
+
+                    ?>
             </div>
             
             <div>
@@ -83,7 +139,7 @@ function finCuerpo()
             <footer>
                 <hr width="90%"  />  
                 <div>
-                    &copy; Copyright  by Profesor
+                    &copy; Copyright  by Carmen
                 </div>
             </footer>
         </div>

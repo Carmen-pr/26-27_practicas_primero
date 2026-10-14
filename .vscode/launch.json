@@ -8,8 +8,8 @@
             "name": "Listen for Xdebug",
             "type": "php",
             "request": "launch",
-            "port": 9003,
-            "pathMappings":{
+            "port": 9003 ,
+             "pathMappings":{
                 "/var/www/html":"${workspaceRoot}/web"
             }
         },
