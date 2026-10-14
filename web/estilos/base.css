@@ -31,6 +31,14 @@ body {
     
 }
 
+#barraMenu ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+}
+
 #barraUbicacion{
     background-color: #e8fff0;
     color:black;

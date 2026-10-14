@@ -8,6 +8,9 @@ $ubicacion = [
     ["TEXTO" => "Ejercicio 1"]
 ];
 
+
+
+
 //dibuja la plantilla de la vista
 inicioCabecera("APLICACION PRIMER TRIMESTRE");
 cabecera();
@@ -27,6 +30,18 @@ function cuerpo()
 ?>
 <?php
 echo "<h2>Escribir distintas cadenas</h2>";
+
+$cadena1 = mundo;
+$cadena2 = "Comillas Dobles";
+$cadena3 = <<<END
+Equivale a una cadena de comillas dobles
+END;
+$cadena4 = <<<'EOD'
+Equivale a una cadena de comillas simples
+EOD;
+
+
+echo $cadena1 'Hola ' . PHP_EOL;
 
 
 
