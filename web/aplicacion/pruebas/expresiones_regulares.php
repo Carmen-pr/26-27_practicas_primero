@@ -50,7 +50,7 @@ preg_match($exp,$cadena,$resultado,PREG_OFFSET_CAPTURE);
 
 //cuantificador, como hacer perezosos
 $cadena="/* primer comentario */ no comentado /* segundo comentario */”y el patrón /\*.*\*/";
-$exp="/\*.*\*/";
+$exp="/^[\]*.*?[\]/";
 
 preg_match($exp,$cadena,$resultado,PREG_OFFSET_CAPTURE);
 
