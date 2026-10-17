@@ -54,9 +54,15 @@ function inicioCuerpo(string $cabecera, array $ubicacion=[])
 
 ?>
     <body>
+
         <div id="documento">
         
             <header>
+            <!-- Esta es la imagen del punto seguro -->
+            <a href="/index.php" id="punto-seguro">
+                <img src="/img/punto_seguro.png" alt="Ir al inicio" width="40">
+            </a>
+
                 <h1 id="titulo"><?php echo $cabecera;?></h1>
             </header>
             

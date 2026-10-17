@@ -5,6 +5,26 @@ body {
     font-size: 16px;
 }
 
+/* Quitar el subrayado de todos los enlaces */
+a {
+    text-decoration: none;
+}
+
+header {
+    display: flex;          /* coloca imagen y título en la misma fila */
+    align-items: center;    /* los centra verticalmente */
+    gap: 15px;              /* separación entre la imagen y el título */
+}
+
+#punto-seguro img {
+    display: block;         /* quita el hueco bajo la imagen */
+    transition: filter 0.2s;   /* el cambio se hace suave */ /* Oscurecer el enlace de inicio (el punto seguro) al pasar el cursor */
+}
+
+#punto-seguro:hover img {
+     filter: brightness(0.7);   /* menos de 1 oscurece; 1 es la imagen original */
+}
+
 #documento{
     margin: 30px auto;                          /* separación arriba/abajo y centrado */
     background-color: #e8fff0;                  /* color de fondo del cuadrado */
@@ -37,6 +57,18 @@ body {
     padding: 20px;
     display: flex;
     gap: 20px;
+}
+
+/* Oscurecer también la opción «Inicio» del menú al pasar el cursor */
+#barraMenu a {
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+/* Iluminar también la opción «Inicio» del menú al pasar el cursor */
+#barraMenu a:hover {
+    color: #555;               /* gris oscuro sobre el azul/morado del enlace */
+    
 }
 
 #barraUbicacion{
