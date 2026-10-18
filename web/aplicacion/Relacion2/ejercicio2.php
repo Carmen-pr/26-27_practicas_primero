@@ -10,80 +10,89 @@ $ubicacion = [
 ];
  
 $cadena = "Está la niña en casa";
-$len = mb_strlen($cadena);            // 20 (strlen daría 22)
+$len = mb_strlen($cadena, 'UTF-8');
  
-// --- Formas NO válidas para recorrer la cadena (trabajan con bytes) ---
-// Con []: $cadena[$i] devuelve UN BYTE y la á o la ñ salen como �
+// [] y substr trabajan con bytes: parten caracteres como á y ñ.
+// Por eso estas pruebas no sirven para recorrer la cadena por caracteres:
 // for ($i = 0; $i < strlen($cadena); $i++) { echo $cadena[$i]; }
-// Con substr: también trabaja con bytes, mismo problema
 // for ($i = 0; $i < strlen($cadena); $i++) { echo substr($cadena, $i, 1); }
  
-// --- Forma válida: mb_substr. Cada carácter con tantos espacios como su posición ---
+// --- Forma válida: mb_substr ---
 $lineasA = [];
 for ($i = 0; $i < $len; $i++) {
-    $lineasA[] = ['espacios' => $i, 'caracter' => mb_substr($cadena, $i, 1)];
+    $lineasA[] = ['espacios' => $i, 'caracter' => mb_substr($cadena, $i, 1, 'UTF-8')];
 }
  
-// --- Orden inverso con índices negativos (-1 es el último carácter) ---
-// Posiciones pares (0, 2, ...) en mayúscula e impares en minúscula
+// --- Orden inverso con índices negativos ---
 $lineasB = [];
 for ($i = 0; $i < $len; $i++) {
-    $c = mb_substr($cadena, -1 - $i, 1);
-    $c = ($i % 2 == 0) ? mb_strtoupper($c) : mb_strtolower($c);
+    $c = mb_substr($cadena, -1 - $i, 1, 'UTF-8');
+    $c = ($i % 2 == 0) ? mb_strtoupper($c, 'UTF-8') : mb_strtolower($c, 'UTF-8');
     $lineasB[] = ['espacios' => $i, 'caracter' => $c];
 }
  
-// --- Separar por la letra a (la última parte queda vacía) ---
-// mb_split es la versión multibyte de explode
+// --- Separar por la letra a ---
 $partes = mb_split("a", $cadena);
  
-// --- Cambiar el carácter siguiente a "niña" (el espacio) por "/mujer " ---
+// --- Cambiar el carácter siguiente a "niña" ---
 $palabra = "niña";
-$pos = mb_strpos($cadena, $palabra);
+$pos = mb_strpos($cadena, $palabra, 0, 'UTF-8');
 if ($pos !== false) {
-    $fin = $pos + mb_strlen($palabra);          // posición del espacio
-    $nueva = mb_substr($cadena, 0, $fin)        // hasta el final de "niña"
-           . "/mujer "                          // texto nuevo
-           . mb_substr($cadena, $fin + 1);      // saltando el espacio original
+    $fin = $pos + mb_strlen($palabra, 'UTF-8');
+    $nueva = mb_substr($cadena, 0, $fin, 'UTF-8')
+           . "/mujer "
+           . mb_substr($cadena, $fin + 1, $len, 'UTF-8');
 } else {
-    $nueva = $cadena;                           // la palabra no estaba
+    $nueva = $cadena;
 }
+
+// Datos que se pasan a la vista.
+$datos = [
+    'lineasA' => $lineasA,
+    'lineasB' => $lineasB,
+    'partes'  => $partes,
+    'nueva'   => $nueva
+];
  
 //dibuja la plantilla de la vista
 inicioCabecera("EJERCICIO_2");
 cabecera();
 finCabecera();
 inicioCuerpo("Ejercicio 2: Mostrar cadenas", $ubicacion);
-cuerpo($lineasA, $lineasB, $partes, $nueva); //llamo a la vista
+cuerpo($datos);
 finCuerpo();
+
 // **********************************************************
-//vista
+// VISTA: Funciones debajo del cierre del cuerpo
 function cabecera()
 {
     
 }
-//vista
-function cuerpo($lineasA, $lineasB, $partes, $nueva)
+
+function cuerpo($datos)
 {
-?>
-    <h2>Cada carácter en una línea (mb_substr)</h2>
-    <?php foreach ($lineasA as $linea) { ?>
-        <p><?= str_repeat("&nbsp;", $linea['espacios']) . htmlspecialchars($linea['caracter']) ?></p>
-    <?php } ?>
- 
-    <h2>En orden inverso con índices negativos</h2>
-    <?php foreach ($lineasB as $linea) { ?>
-        <p><?= str_repeat("&nbsp;", $linea['espacios']) . htmlspecialchars($linea['caracter']) ?></p>
-    <?php } ?>
- 
-    <h2>Separar la cadena por la letra a</h2>
-    <?php foreach ($partes as $clave => $valor) { ?>
-        <p><?= "Parte " . ($clave + 1) . ": " . htmlspecialchars($valor) ?></p>
-    <?php } ?>
- 
-    <h2>Cambiar el espacio detrás de «niña» por «/mujer »</h2>
-    <p><?= htmlspecialchars($nueva) ?></p>
- 
-    <p><a href="index.php">Volver a la Relación 2</a></p>
-<?php
+    echo "<h2>Cada carácter en una línea (mb_substr)</h2>\n<pre>";
+    foreach ($datos['lineasA'] as $linea) {
+        echo str_repeat(' ', $linea['espacios']);
+        echo htmlspecialchars($linea['caracter'], ENT_QUOTES, 'UTF-8');
+        echo "\n";
+    }
+    echo "</pre>\n";
+
+    echo "<h2>En orden inverso con índices negativos</h2>\n<pre>";
+    foreach ($datos['lineasB'] as $linea) {
+        echo str_repeat(' ', $linea['espacios']);
+        echo htmlspecialchars($linea['caracter'], ENT_QUOTES, 'UTF-8');
+        echo "\n";
+    }
+    echo "</pre>\n";
+
+    echo "<h2>Separar la cadena por la letra a</h2>\n";
+    foreach ($datos['partes'] as $indice => $parte) {
+        echo '<p>Parte ' . ($indice + 1) . ': «'
+           . htmlspecialchars($parte, ENT_QUOTES, 'UTF-8') . "»</p>\n";
+    }
+
+    echo "<h2>Cambiar el espacio detrás de «niña» por «/mujer »</h2>\n";
+    echo '<p>' . htmlspecialchars($datos['nueva'], ENT_QUOTES, 'UTF-8') . "</p>\n";
 }

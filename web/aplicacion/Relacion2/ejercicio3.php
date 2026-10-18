@@ -9,51 +9,50 @@ $ubicacion = [
     ["TEXTO" => "Ejercicio 3"]
 ];
  
-// a) Desde un array con todos los caracteres válidos.
-// range() rellena el array con los números, las minúsculas y las mayúsculas (62 caracteres).
+// a) Array con todos los dígitos y letras permitidos.
 $caracteres = array_merge(range('0', '9'), range('a', 'z'), range('A', 'Z'));
 $cadenaA = "";
 for ($i = 0; $i < 20; $i++) {
-    // El último índice válido es count() - 1 (los índices empiezan en 0)
-    $cadenaA .= $caracteres[mt_rand(0, count($caracteres) - 1)];
+    $cadenaA .= $caracteres[random_int(0, count($caracteres) - 1)];
 }
  
-// b) Desde el código ASCII: rango amplio ('0' = 48 hasta 'z' = 122)
-// y se descartan los caracteres que no son letra ni número.
+// b) Códigos ASCII del 48 al 122; se descartan los símbolos intermedios.
 $cadenaB = "";
-while (mb_strlen($cadenaB) < 20) {
-    $codigo = mt_rand(48, 122);          // del '0' (48) a la 'z' (122)
-    // Solo valen: números (48-57), mayúsculas (65-90) y minúsculas (97-122).
-    // Se descartan los símbolos intermedios : ; < = > ? @ [ \ ] ^ _ `
-    if ($codigo <= 57 || ($codigo >= 65 && $codigo <= 90) || $codigo >= 97) {
-        $cadenaB .= mb_chr($codigo);     // mb_chr es la versión multibyte de chr
+while (mb_strlen($cadenaB, 'UTF-8') < 20) {
+    $codigo = random_int(48, 122);
+    if (($codigo >= 48 && $codigo <= 57)
+        || ($codigo >= 65 && $codigo <= 90)
+        || ($codigo >= 97 && $codigo <= 122)) {
+        $cadenaB .= mb_chr($codigo, 'UTF-8');
     }
 }
+
+// Datos que se pasan a la vista.
+$datos = [
+    'cadenaA' => $cadenaA,
+    'cadenaB' => $cadenaB
+];
  
 //dibuja la plantilla de la vista
 inicioCabecera("EJERCICIO_3");
 cabecera();
 finCabecera();
 inicioCuerpo("Ejercicio 3: Cadenas aleatorias", $ubicacion);
-cuerpo($cadenaA, $cadenaB); //llamo a la vista
+cuerpo($datos);
 finCuerpo();
+
 // **********************************************************
-//vista
+// VISTA: Funciones debajo del cierre del cuerpo
 function cabecera()
 {
     
 }
-//vista
-function cuerpo($cadenaA, $cadenaB)
+
+function cuerpo($datos)
 {
-?>
-    <h2>a) Desde un array de caracteres</h2>
-    <p><?= $cadenaA ?></p>
- 
-    <h2>b) Desde el código ASCII</h2>
-    <p><?= $cadenaB ?></p>
- 
-    <p><a href="index.php">Volver a la Relación 2</a></p>
-<?php
+    echo "<h2>a) Desde un array de caracteres</h2>\n";
+    echo '<p>' . htmlspecialchars($datos['cadenaA'], ENT_QUOTES, 'UTF-8') . "</p>\n";
+
+    echo "<h2>b) Desde el código ASCII</h2>\n";
+    echo '<p>' . htmlspecialchars($datos['cadenaB'], ENT_QUOTES, 'UTF-8') . "</p>\n";
 }
- 

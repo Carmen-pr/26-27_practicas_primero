@@ -9,25 +9,32 @@ $ubicacion = [
     ["TEXTO" => "Ejercicio 5"]
 ];
  
-// Cadena de varias líneas con NOWDOC (no lleva variables, así que no hay que interpretar nada).
-// Cada tipo de elemento está en líneas distintas: etiquetas, números y correos.
+// Las etiquetas, los números y los correos aparecen en líneas distintas.
 $cadena = <<<'HTML'
-<div class="contenedor"> <p> </p> <h1> </h1>
+<div class="contenedor">
+<p>Ejemplo</p>
+<h1>Prueba</h1>
+</div>
 42 7 123456 2026
 juan@example.com
 maria.gomez@correo.es
 HTML;
- 
+
 // Expresiones regulares
-$regex_etiquetas = '/<[^>]+>/';                                          // < ... >
-$regex_numeros = '/\b\d+\b/';                                            // dígitos que no forman parte de una palabra
-$regex_emails = '/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/';      // aaaa@aaaa.aa
+$regex_etiquetas = '/<\/?[a-z][^>]*>/iu';
+$regex_numeros = '/\b[0-9]+\b/u';
+$regex_emails = '/\b[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\b/u';
  
-// Array con los resultados de cada búsqueda (elemento y posición)
-$resultados = [
-    'Etiquetas HTML' => buscar($regex_etiquetas, $cadena),
-    'Números' => buscar($regex_numeros, $cadena),
-    'Direcciones de email' => buscar($regex_emails, $cadena)
+// Buscar cada tipo de elemento antes de pasar los datos a la vista.
+$etiquetas = buscar($regex_etiquetas, $cadena);
+$numeros   = buscar($regex_numeros, $cadena);
+$emails    = buscar($regex_emails, $cadena);
+
+$datos = [
+    'cadena'               => $cadena,
+    'Etiquetas HTML'       => $etiquetas,
+    'Números'              => $numeros,
+    'Direcciones de email' => $emails
 ];
  
 //dibuja la plantilla de la vista
@@ -35,48 +42,57 @@ inicioCabecera("EJERCICIO_5");
 cabecera();
 finCabecera();
 inicioCuerpo("Ejercicio 5: Expresiones regulares", $ubicacion);
-cuerpo($resultados); //llamo a la vista
+cuerpo($datos);
 finCuerpo();
+
 // **********************************************************
-//vista
+// VISTA
 function cabecera()
 {
  
 }
-//vista
-function cuerpo($resultados)
+
+function cuerpo($datos)
 {
-    foreach ($resultados as $titulo => $lista) {
-?>
-        <h3><?= $titulo ?></h3>
-        <ul>
-            <?php foreach ($lista as $r) { ?>
-                <li><?= htmlspecialchars($r['elemento']) . " Posición: " . $r['posicion'] ?></li>
-            <?php } ?>
-        </ul>
-<?php
+    echo "<h2>Cadena analizada</h2>\n";
+    echo '<pre>' . htmlspecialchars($datos['cadena'], ENT_QUOTES, 'UTF-8') . "</pre>\n";
+
+    echo "<h3>Etiquetas HTML</h3>\n<ul>\n";
+    foreach ($datos['Etiquetas HTML'] as $resultado) {
+        echo '<li>' . htmlspecialchars($resultado['elemento'], ENT_QUOTES, 'UTF-8')
+           . ' — posición: ' . $resultado['posicion'] . "</li>\n";
     }
-?>
-    <p><a href="index.php">Volver a la Relación 2</a></p>
-<?php
+    echo "</ul>\n";
+
+    echo "<h3>Números</h3>\n<ul>\n";
+    foreach ($datos['Números'] as $resultado) {
+        echo '<li>' . htmlspecialchars($resultado['elemento'], ENT_QUOTES, 'UTF-8')
+           . ' — posición: ' . $resultado['posicion'] . "</li>\n";
+    }
+    echo "</ul>\n";
+
+    echo "<h3>Direcciones de email</h3>\n<ul>\n";
+    foreach ($datos['Direcciones de email'] as $resultado) {
+        echo '<li>' . htmlspecialchars($resultado['elemento'], ENT_QUOTES, 'UTF-8')
+           . ' — posición: ' . $resultado['posicion'] . "</li>\n";
+    }
+    echo "</ul>\n";
 }
  
 // Devuelve todas las coincidencias de un patrón usando preg_match en un bucle.
-// preg_match solo encuentra la primera, así que se repite empezando tras la anterior.
 function buscar($regex, $cadena)
 {
     $encontrados = [];
     $desde = 0;
     while (preg_match($regex, $cadena, $m, PREG_OFFSET_CAPTURE, $desde) === 1) {
-        $bytes = $m[0][1];                                         // posición en bytes (así la da preg_match)
+        $bytes = $m[0][1];                                         // posición en bytes
         $encontrados[] = [
             'elemento' => $m[0][0],
             // mb_strcut corta por bytes sin partir caracteres; mb_strlen cuenta los caracteres
-            'posicion' => mb_strlen(mb_strcut($cadena, 0, $bytes))
+            'posicion' => mb_strlen(mb_strcut($cadena, 0, $bytes, 'UTF-8'), 'UTF-8')
         ];
         // mb_strlen con '8bit' cuenta bytes (el desplazamiento de preg_match va en bytes)
         $desde = $bytes + mb_strlen($m[0][0], '8bit');
     }
     return $encontrados;
 }
- 
