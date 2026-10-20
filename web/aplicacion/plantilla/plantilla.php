@@ -54,9 +54,15 @@ function inicioCuerpo(string $cabecera, array $ubicacion=[])
 
 ?>
     <body>
+
         <div id="documento">
         
             <header>
+            <!-- Esta es la imagen del punto seguro -->
+            <a href="/index.php" id="punto-seguro">
+                <img src="/img/punto_seguro.png" alt="Ir al inicio" width="40">
+            </a>
+
                 <h1 id="titulo"><?php echo $cabecera;?></h1>
             </header>
             
@@ -66,9 +72,11 @@ function inicioCuerpo(string $cabecera, array $ubicacion=[])
             <div id="barraMenu">
                 <ul>
                     <li><a href="/index.php">Inicio</a></li>
-                    <li><a href="/aplicacion/pruebas/index.php">Ejemplos Basicos</a></li>
-                    <li><a href="/aplicacion/relacion1/relacion1.php">Relación 1</a></li>
-                    <li><a href="/aplicacion/relacion2/relacion2.php">Relación 2</a></li>
+                    <!-- <li><a href="/aplicacion/pruebas/index.php">Ejemplos Basicos</a></li> -->
+                    <li><a href="/aplicacion/Relacion1/relacion1.php">Relación 1</a></li>
+                    <li><a href="/aplicacion/Relacion2/index.php">Relación 2</a></li>
+                    <li><a href="/aplicacion/relacion3/index.php">Relación 3</a></li>
+                    
                  </ul> 
                 
             </div>

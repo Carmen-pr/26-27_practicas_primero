@@ -1,7 +1,5 @@
 <?php
 include_once(dirname(__FILE__) . "/../../cabecera.php");
-define("NUME" ,25);
-const NUME1=56;
 
 //controlador
 //dibuja la plantilla de la vista
