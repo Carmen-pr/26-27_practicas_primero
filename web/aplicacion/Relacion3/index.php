@@ -28,6 +28,18 @@ function cuerpo()
 
     echo ("<h1>Ejercicio 1</h1>");
 
+    echo ("<h1>Ejercicio 2</h1>");
 
+    echo ("<h1>Ejercicio 3</h1>");
+
+    echo ("<h1>Ejercicio 4</h1>");
+
+    echo ("<h1>Ejercicio 5</h1>");
+
+    echo ("<h1>Ejercicio 6</h1>");
+
+    echo ("<h1>Ejercicio 7</h1>");
+
+    
 }
     
