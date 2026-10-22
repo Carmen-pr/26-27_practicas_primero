@@ -83,10 +83,49 @@ function cuerpo()
 
     echo ("<h1>Ejercicio 5</h1>");
 
+    foreach (["resta", "suma", "multiplicacion", "division"] as $operacion) {
+        $resultado = hacerOperacion($operacion, 3, 1);
+    if($resultado === false) {
+    echo "hacerOperacion(\"$operacion\", 3, 1): ERROR (operación no válida)<br>";
+    } else {
+    echo "hacerOperacion(\"$operacion\", 3, 1) = $resultado<br>";
+    }
+    }
+
     echo ("<h1>Ejercicio 6</h1>");
+
+    echo "<h3>Con funciones flecha</h3>";
+    echo "Suma: " . llamadaAFuncion(2, 4, fn($a, $b) => $a + $b) . "<br>";
+    echo "Resta: " . llamadaAFuncion(6, 4, fn($a, $b) => $a - $b) . "<br>";
+    echo "Multiplicación: " . llamadaAFuncion(2, 4, fn($a, $b) => $a * $b) . "<br>";
+    echo "<h3>Con funciones anónimas asignadas a variables</h3>";
+        $sumar = function (int $a, int $b): int {
+    return $a + $b;
+    };
+        $restar = function (int $a, int $b): int {
+    return $a - $b;
+    };
+        $multiplicar = function (int $a, int $b): int {
+    return $a * $b;
+    };
+    echo "Suma: " . llamadaAFuncion(2, 4, $sumar) . "<br>";
+    echo "Resta: " . llamadaAFuncion(6, 4, $restar) . "<br>";
+    echo "Multiplicación: " . llamadaAFuncion(2, 4, $multiplicar) . "<br>";
 
     echo ("<h1>Ejercicio 7</h1>");
 
+        $palabras = ["uno", "grande", "caminos", "a"];
+    if (ordenar($palabras)) {
+    echo "Ordenado de más a menos caracteres: " . implode(", ", $palabras) ."<br>";
+    } else {
+    echo "ERROR: el array debe contener solo cadenas<br>";
+    }
+        $mezcla = ["uno", 5, "caminos"];
+    if (ordenar($mezcla)) {
+    echo "Ordenado: " . implode(", ", $mezcla) . "<br>";
+    } else {
+    echo "Ordenar con un elemento que no es cadena: ERROR" ."<br>";
+    }
     
 }
     

@@ -117,3 +117,89 @@ function devuelve(int &$num1, int $num2 = 5, int $num3 = 10): int
 }
 
 
+/**
+* 5a. Suma de dos números.
+* @param int $a Primer operando.
+* @param int $b Segundo operando.
+* @return int $a + $b
+*/
+
+function suma(int $a, int $b): int
+{
+return $a + $b;
+}
+/**
+* 5b. Resta de dos números.
+* @param int $a Primer operando.
+* @param int $b Segundo operando.
+* @return int $a - $b
+*/
+function resta(int $a, int $b): int
+{
+return $a - $b;
+}
+/**
+* 5c. Multiplicación de dos números.
+* @param int $a Primer operando.
+* @param int $b Segundo operando.
+* @return int $a * $b
+*/
+function multiplicacion(int $a, int $b): int
+{
+return $a * $b;
+}
+/**
+* 5. Ejecuta la operación indicada por su nombre usando una variable
+función.
+*
+* @param string $operacion "suma", "resta" o "multiplicacion".
+* @param int $a Primer operando.
+* @param int $b Segundo operando.
+* @return int|false El resultado; false si la operación no es
+válida.
+*/
+function hacerOperacion(string $operacion, int $a, int $b): int|false
+{
+// Solo se llama a funciones de la lista: nunca a un nombre cualquiera que llegue de fuera
+if (!in_array($operacion, ["suma", "resta", "multiplicacion"], true)) {
+return false;
+}
+$funcion = $operacion; // variable función: contiene el nombre de la función
+return $funcion($a, $b); // se llama a la función cuyo nombre guarda la variable
+}
+
+
+/**
+* 6. Llama a la función recibida (callback) con los dos operandos.
+*
+* @param int $a Primer operando.
+* @param int $b Segundo operando.
+* @param callable $callback Función que se ejecuta con $a y $b.
+* @return int El resultado de llamar al callback.
+*/
+function llamadaAFuncion(int $a, int $b, callable $callback): int
+{
+return $callback($a, $b);
+}
+
+
+/**
+* 7. Ordena un array de cadenas de mayor a menor número de caracteres.
+*
+* @param array $vector Array de cadenas que se ordena (paso por referencia).
+* @return bool true si se ha ordenado; false si algún elemento no es una cadena.
+*/
+function ordenar(array &$vector): bool
+{
+// Comprobación de argumentos: todos los elementos deben ser cadenas
+foreach ($vector as $elemento) {
+if (!is_string($elemento)) {
+return false;
+}
+}
+// usort con una función anónima: descendente por número de caracteres
+return usort($vector, function (string $a, string $b): int {
+return mb_strlen($b) <=> mb_strlen($a);
+});
+}
+
