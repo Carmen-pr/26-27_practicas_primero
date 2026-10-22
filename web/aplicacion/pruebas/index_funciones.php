@@ -38,7 +38,51 @@ if (!$numero=doble($numero))
         exit;
     }
 
+$numero=variosParametros(25,"2aaa8769",56);
 
+$numero=variosParametros(25,"2");
+
+$numero=variosParametros(25,par3:100);
+
+$numero=variosParametros(25,"2aaa8769",56,23,56,89,24);
+
+$numero=suma(1,2,3,4,5,6,7,8,9,10);
+$numero=suma1(1,2,3,4,5,6,7,8,9,10);
+
+$r=[3,4,5,6,7,8,9,10];
+$numero=suma(1,2,...$r);
+
+$n1=15;
+$otra="n1";
+
+//Variable-variable
+$numero=$$otra;
+
+//varianble funcion
+$otra="suma";
+$numero=$otra(1,2,3,4);
+
+//funciones anonimas
+$func= function (float $a, float $b, float ...$resto):float
+{
+        $res=$a+$b;
+    foreach($resto as $num)
+        $res+=$num;
+    return$res;
+};
+
+$numero=$func(1,2,3,4);
+
+$s=function ( int $a, int $b){
+    return $a+$b;
+};
+
+$numero=$s(3,20);
+
+$s=fn(int $a, int $b)=>$a+$b+$numero;
+$numero=$s(29,20);
+
+$numero=$s(29,20);
 
 //dibuja la plantilla de la vista
 inicioCabecera("APLICACION PRIMER TRIMESTRE");
