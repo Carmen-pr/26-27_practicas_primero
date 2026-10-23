@@ -149,14 +149,12 @@ function multiplicacion(int $a, int $b): int
 return $a * $b;
 }
 /**
-* 5. Ejecuta la operación indicada por su nombre usando una variable
-función.
+* 5. Ejecuta la operación indicada por su nombre usando una variable función.
 *
 * @param string $operacion "suma", "resta" o "multiplicacion".
 * @param int $a Primer operando.
 * @param int $b Segundo operando.
-* @return int|false El resultado; false si la operación no es
-válida.
+* @return int|false El resultado; false si la operación no es válida.
 */
 function hacerOperacion(string $operacion, int $a, int $b): int|false
 {
