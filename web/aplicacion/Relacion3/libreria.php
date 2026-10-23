@@ -1,4 +1,5 @@
 <?php
+//Relación 3
 
 /**
 * Posiciones (claves) que no se aceptan en cuentaVeces().
