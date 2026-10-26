@@ -25,6 +25,10 @@ function cabecera() {}
 function cuerpo()
 {
 
+    /**
+     *  EJERCICIO 1 ***********************************************************************************
+     */
+
     echo ("<h1>Ejercicio 1</h1>");
     
     $vector = []; // el array empieza vacío
@@ -40,6 +44,9 @@ function cuerpo()
     }
     echo "<pre>" . print_r($vector, true) . "</pre>";
 
+    /**
+     *  EJERCICIO 2 ***********************************************************************************
+     */
     echo ("<h1>Ejercicio 2</h1>");
 
     foreach ([7, 20, -1, 0] as $longitud) {
@@ -51,6 +58,10 @@ function cuerpo()
     }
     }
     echo "generarCadena() con el valor por defecto: " . generarCadena() . "<br>";
+
+    /**
+     *  EJERCICIO 3 ***********************************************************************************
+     */
 
     echo ("<h1>Ejercicio 3</h1>");
 
@@ -65,6 +76,10 @@ function cuerpo()
         $resultado = operaciones(1, 5);
 // Aquí 0 sería un resultado válido, por eso se compara con === false
     echo "operaciones(1, 5): " . ($resultado === false ? "ERROR (faltan operandos)" : $resultado) . "<br>";
+
+    /**
+     *  EJERCICIO 4 *************************************************************************************
+     */
 
     echo ("<h1>Ejercicio 4</h1>");
     
@@ -81,6 +96,10 @@ function cuerpo()
         $producto = devuelve($valor, num3: 6); // el primero y el tercero (argumento con nombre)
     echo "devuelve(\$valor, num3: 6): producto $producto, \$valor ahora vale $valor<br>";
 
+    /**
+     *  EJERCICIO 5 ***********************************************************************************
+     */
+
     echo ("<h1>Ejercicio 5</h1>");
 
     foreach (["resta", "suma", "multiplicacion", "division"] as $operacion) {
@@ -91,6 +110,10 @@ function cuerpo()
     echo "hacerOperacion(\"$operacion\", 3, 1) = $resultado<br>";
     }
     }
+
+    /**
+     *  EJERCICIO 6 ***********************************************************************************
+     */
 
     echo ("<h1>Ejercicio 6</h1>");
 
@@ -111,6 +134,10 @@ function cuerpo()
     echo "Suma: " . llamadaAFuncion(2, 4, $sumar) . "<br>";
     echo "Resta: " . llamadaAFuncion(6, 4, $restar) . "<br>";
     echo "Multiplicación: " . llamadaAFuncion(2, 4, $multiplicar) . "<br>";
+
+    /**
+     *  EJERCICIO 7 ***********************************************************************************
+     */
 
     echo ("<h1>Ejercicio 7</h1>");
 

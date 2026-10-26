@@ -15,8 +15,7 @@ const POSICIONES_NO_VALIDAS = ["2daw", "primera"];
 * @param int $llamada Aquí se devuelve el número de llamada actual (paso por referencia).
 * @return bool true si todo ha ido bien; false si la posición no es válida.
 */
-function cuentaVeces(array &$vector, string $clave, int|float $valor, int
-&$llamada): bool
+function cuentaVeces(array &$vector, string $clave, int|float $valor, int &$llamada): bool
 {
 // static: la variable conserva su valor entre una llamada y la siguiente
 static $contadorLlamadas = 0;
