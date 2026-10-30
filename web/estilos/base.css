@@ -1,156 +1,230 @@
 @charset "UTF8";
 
+/* --- 1. CONFIGURACIÓN GENERAL --- */
 body {
-    background-color: cyan;
+    background-color: #0284C7; /* Azul técnico vibrante y agradable de fondo */
     font-size: 16px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Tipografía moderna y limpia */
 }
 
-/* Quitar el subrayado de todos los enlaces */
+/* Quitar el subrayado por defecto de todos los enlaces */
 a {
     text-decoration: none;
 }
 
+
+/* --- 2. CABECERA Y LOGOTIPO --- */
 header {
-    display: flex;          /* coloca imagen y título en la misma fila */
-    align-items: center;    /* los centra verticalmente */
-    gap: 15px;              /* separación entre la imagen y el título */
+    display: flex;          /* Coloca imagen y título en la misma fila */
+    align-items: center;    /* Los centra verticalmente */
+    gap: 15px;              /* Separación entre la imagen y el título */
 }
 
 #punto-seguro img {
-    display: block;         /* quita el hueco bajo la imagen */
-    transition: filter 0.2s;   /* el cambio se hace suave */ /* Oscurecer el enlace de inicio (el punto seguro) al pasar el cursor */
+    display: block;         /* Quita el hueco inferior de la imagen */
+    transition: filter 0.2s;/* Animación suave */ 
 }
 
 #punto-seguro:hover img {
-     filter: brightness(0.7);   /* menos de 1 oscurece; 1 es la imagen original */
+     filter: brightness(0.7);/* Oscurece sutilmente el logo al pasar el cursor */
 }
 
-#documento{
-    margin: 30px auto;                          /* separación arriba/abajo y centrado */
-    background-color: #e8fff0;                  /* color de fondo del cuadrado */
-    max-width: 700px;                           /* ancho máximo */
-    padding: 20px;                              /* aire entre el borde y el contenido */
-    border: 2px solid #20B2AA;                  /* borde */
-    border-radius: 12px;                        /* esquinas redondeadas */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);  /* sombra */
+#cabecera {
+    background-color: #EEF2F6;                  /* Fondo gris/azul muy suave para la cabecera */
+    padding: 10px;
+    border-radius: 8px;
 }
 
-#cabecera{
-    background-color: #14e737;
-    padding: 5px;
-}
-
-#cabecera #logo{
+#cabecera #logo {
     width: 75px;
     height: 50px;
 }
 
-#cabecera #titulo{
+#cabecera #titulo {
     font-size: 1.3em;
     font-style: italic;
-    
+    color: #4F46E5;                             /* Tono índigo vibrante para el título de la app */
+    font-weight: bold;
 }
 
-#barraMenu ul{
+
+/* --- 3. CONTENEDOR PRINCIPAL (TARJETA) --- */
+#documento {
+    margin: 30px auto;                          /* Separación superior/inferior y centrado en pantalla */
+    background-color: #FFFFFF;                  /* Blanco puro para el fondo de los ejercicios */
+    max-width: 700px;                           /* Ancho máximo de la tarjeta */
+    padding: 20px;                              /* Espaciado interno */
+    border: 3px solid #777BB4;                  /* Borde grueso con el color púrpura de PHP */
+    border-radius: 12px;                        /* Esquinas redondeadas */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);/* Sombra pronunciada para dar volumen sobre el fondo azul */
+}
+
+
+/* --- 4. BARRA DE MENÚ SUPERIOR (ESTILO PESTAÑAS / TABS) --- */
+#barraMenu ul {
     list-style-type: none;
-    margin: 0;
-    padding: 20px;
+    margin: 20px 0 10px 0;                      /* Márgenes exteriores */
+    padding: 0;
     display: flex;
-    gap: 20px;
+    gap: 12px;                                  /* Separación entre pestañas */
+    flex-wrap: wrap;                            /* Se adapta si la pantalla se estrecha */
 }
 
-/* Oscurecer también la opción «Inicio» del menú al pasar el cursor */
+/* Estilo base de cada pestaña del menú */
 #barraMenu a {
     text-decoration: none;
-    transition: color 0.2s;
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #F1F5F9;                  /* Fondo gris suave pasivo */
+    color: #777BB4;                             /* Texto con el morado PHP */
+    font-weight: bold;
+    border-radius: 6px;                         /* Esquinas redondeadas */
+    border: 1px solid #E2E8F0;                  /* Borde fino */
+    transition: all 0.2s ease;                  /* Animación de interacción fluida */
 }
 
-/* Iluminar también la opción «Inicio» del menú al pasar el cursor */
+/* Efecto al pasar el ratón por las pestañas */
 #barraMenu a:hover {
-    color: #555;               /* gris oscuro sobre el azul/morado del enlace */
-    
+    background-color: #777BB4;                  /* La pestaña se rellena de morado PHP */
+    color: white;                               /* Texto en blanco */
+    border-color: #777BB4;
+    transform: translateY(-1px);                 /* Sutil efecto de elevación */
 }
 
-#barraUbicacion{
-    background-color: #e8fff0;
-    color:black;
-    
+/* Clase para la pestaña de la página activa (Opcional para usar desde PHP) */
+#barraMenu a.activa {
+    background-color: #777BB4;
+    color: white;
+    border-color: #777BB4;
 }
 
+#barraUbicacion {
+    background-color: #F1F5F9;                  /* Fondo claro para la barra de migas de pan */
+    color: #0F172A;                             /* Texto oscuro */
+}
+
+/* Limpieza de selectores generales de navegación */
 nav ul {
-    list-style: none;     /* quita las viñetas */
+    list-style: none;
     margin: 0;
     padding: 0;
 }
+
 nav ul li {
-    display: inline-block;   /* los <li> se colocan uno al lado de otro */
-    margin-right: 15px;      /* separación entre opciones */
+    display: block;
+    margin: 0;
 }
 
 
-.boton{
-    background-color: blue;
-    color:white;
-    border:thin black solid;
+/* --- 5. SUBTÍTULO DE SECCIÓN ELEGANTE --- */
+.subtitulo-seccion {
+    color: #1E293B;                             /* Azul pizarra muy oscuro y profesional */
+    font-size: 1.25em;                          /* Tamaño equilibrado */
+    font-weight: 700;                           /* Texto en negrita clara */
+    margin: 25px 0 15px 0;                      /* Espaciado perfecto para dar aire */
+    padding-bottom: 6px;                        /* Distancia con la línea inferior */
+    border-bottom: 2px solid #E2E8F0;           /* Línea sutil gris debajo del título */
+    letter-spacing: -0.02em;                    /* Estilo moderno de espaciado de letras */
 }
 
-.boton a{
+
+/* --- 6. SUBBOTONES PARA LISTADO DE EJERCICIOS (INDEX.PHP) --- */
+.lista-ejercicios {
+    display: flex;
+    flex-direction: column;   /* Alinea los botones uno debajo de otro */
+    gap: 8px;                 /* Controla el espaciado exacto (reemplaza los <br>) */
+    margin: 5px 0 15px 0;
+    max-width: 450px;         /* Ancho ideal adaptado a los textos */
+}
+
+/* Estilo base para cada subbotón de la lista */
+.lista-ejercicios a {
+    display: block;
+    padding: 10px 16px;
+    background-color: #F8FAFC;   /* Fondo claro muy limpio */
+    color: #4F46E5;             /* Texto índigo */
+    font-weight: 600;
+    border-left: 4px solid #777BB4; /* Pestaña lateral izquierda con el color PHP */
+    border-top: 1px solid #E2E8F0;
+    border-right: 1px solid #E2E8F0;
+    border-bottom: 1px solid #E2E8F0;
+    border-radius: 0 6px 6px 0; /* Bordes redondeados únicamente en el lado derecho */
+    transition: all 0.2s ease-in-out;
+}
+
+/* Efecto dinámico morado/índigo al pasar el cursor sobre los subbotones */
+.lista-ejercicios a:hover {
+    background-color: #F5F3FF;   /* Un fondo lila muy suave */
+    color: #4F46E5;             /* El texto se mantiene en el índigo corporativo */
+    border-left-color: #4F46E5;  /* La barra lateral izquierda se ilumina en índigo eléctrico */
+    padding-left: 22px;          /* Desplazamiento dinámico hacia la derecha */
+}
+
+
+/* --- 7. BOTONES GENERALES DE ACCIÓN (CREAR / ENVIAR) --- */
+.boton {
+    background-color: #777BB4;                  /* Fondo morado corporativo PHP */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 4px 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.boton a, 
+.boton a:visited {
     text-decoration: none;
-    color:white;
+    color: white;
 }
 
-.boton a:visited{
-    text-decoration: none;
-    color:white;
+.boton a:hover, 
+.boton:hover {
+    background-color: #4F46E5;                  /* Cambia a índigo eléctrico en hover */
+    color: white;
 }
 
-.boton a:hover{
-    background-color:cyan;
-    color: black;
-}
 
-.boton:hover{
-    background-color:cyan;
-    color: black;
-}
-
-.tabla{
+/* --- 8. TABLAS DE RESULTADOS --- */
+.tabla {
     width: 100%;
     border-collapse: collapse;
     border: none;
     background-color: white;
 }
 
-.tabla th{
-    background-color: teal;
-    color: blue;
-}
-.tabla tr.par{
-    background-color: black;
-    color: white;
-    
+.tabla th {
+    background-color: #777BB4;                  /* Cabecera de la tabla morada PHP */
+    color: white;                               /* Contraste en blanco */
 }
 
-/*.tabla tr.impar{   
-}*/
-
-#pie{
-    background-color: #81e714;
-    color: blue;
-    font-size: 1.5 em;
-    padding: 5px;
+.tabla tr.par {
+    background-color: #E0F2FE;                  /* Filas alternas en tono azul celeste */
+    color: #0369A1;                             /* Texto azul oscuro legible */
 }
 
-.for_texto{
-    border:blue thin solid;
+
+/* --- 9. FORMULARIOS Y ALERTAS --- */
+#pie {
+    background-color: #F8FAFC;
+    color: #475569;
+    font-size: 1.1em;
+    padding: 8px;
+    border-top: 2px solid #E2E8F0;
+}
+
+.for_texto {
+    border: #777BB4 2px solid;                  /* Inputs con el borde morado PHP */
     background-color: white;
-    padding: 2px;
-    margin:2px;
+    padding: 4px;
+    margin: 2px;
     border-radius: 4px;
 }
-.error{
-    background-color: white;
-    color:red;
-    border:thin solid red;
-    padding:5px;
+
+.error {
+    background-color: #FEE2E2;                  /* Fondo rojo de alerta suave */
+    color: #991B1B;                             /* Texto granate oscuro de alta visibilidad */
+    border: 2px solid #EF4444;                  /* Borde rojo vivo */
+    padding: 5px;
+    border-radius: 4px;
 }
