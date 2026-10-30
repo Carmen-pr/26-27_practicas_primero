@@ -39,9 +39,7 @@ $palabra = "niña";
 $pos = mb_strpos($cadena, $palabra, 0, 'UTF-8');
 if ($pos !== false) {
     $fin = $pos + mb_strlen($palabra, 'UTF-8');
-    $nueva = mb_substr($cadena, 0, $fin, 'UTF-8')
-           . "/mujer "
-           . mb_substr($cadena, $fin + 1, $len, 'UTF-8');
+    $nueva = mb_substr($cadena, 0, $fin, 'UTF-8'). "/mujer ". mb_substr($cadena, $fin + 1, $len, 'UTF-8');
 } else {
     $nueva = $cadena;
 }
@@ -71,8 +69,8 @@ function cabecera()
 
 function cuerpo($datos)
 {
-    echo "<h2>Cada carácter en una línea (mb_substr)</h2>\n<pre>";
-    foreach ($datos['lineasA'] as $linea) {
+    echo "<h2>Cada carácter en una línea (mb_substr)</h2>\n<pre>"; //Utilizar cadenas mb_ porque estamos utilizando UTF-8
+    foreach ($datos['lineasA'] as $linea) { //UTILIZAR mb_strlem
         echo str_repeat(' ', $linea['espacios']);
         echo htmlspecialchars($linea['caracter'], ENT_QUOTES, 'UTF-8');
         echo "\n";
