@@ -2,13 +2,13 @@
 include_once(dirname(__FILE__) . "/../../cabecera.php");
 //controlador
 
-$barra=[
+$barra = [
     [
-        "TEXTO"=> "inicio", 
+        "TEXTO" => "inicio",
         "ENLACE" => "/index.php",
     ],
     [
-        "TEXTO"=> "pruebas"
+        "TEXTO" => "pruebas"
     ]
 ];
 
@@ -24,21 +24,24 @@ finCuerpo();
 
 //vista
 function cabecera() {}
+
 //vista
 function cuerpo()
 {
 ?>
-    <br><br>
-    Elemento de pruebas
-    <br><br>
-    <a href="basicas.php">Funcionamiento básico</a><br>
-    <a href="pasopar.php">Trabajo comunicacion controlador-vista</a><br>
-    <a href="array.php">Arrays</a><br>
-    <a href="cadenas.php">Cadenas</a><br>
-    <a href="expresiones_regulares.php">Expresiones Regulares</a><br>
-    <a href="index_funciones.php">Funciones</a><br>
-    <a href="clases.php">Clases</a>
+    <div id="documento">
+        <h2 class="subtitulo-seccion">Elemento de pruebas</h2>
 
-
+        <div class="lista-ejercicios">
+            <a href="basicas.php">Funcionamiento básico</a>
+            <a href="pasopar.php">Trabajo comunicacion controlador-vista</a>
+            <a href="array.php">Arrays</a>
+            <a href="cadenas.php">Cadenas</a>
+            <a href="expresiones_regulares.php">Expresiones Regulares</a>
+            <a href="index_funciones.php">Funciones</a>
+            <a href="clases.php">Clases</a>
+            <a href="pagformulario.php">Paginas Formularios</a>
+        </div>
+    </div>
 <?php
 }
