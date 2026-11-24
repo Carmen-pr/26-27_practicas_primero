@@ -1,0 +1,2 @@
+nombre,vicente,16,
+noemi,ordenador,1234,12,

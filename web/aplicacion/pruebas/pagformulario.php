@@ -2,19 +2,34 @@
 include_once(dirname(__FILE__) . "/../../cabecera.php");
 //controlador
 
-$barra = [
+$barra=[
     [
-        "TEXTO" => "inicio",
-        "LINK" => "/index.php",
+       "TEXTO"=> "inicio",
+       "ENLACE" =>"/index.php", // Cambiado LINK por ENLACE
     ],
-    [
-        "TEXTO" => "pruebas",
-        "LINK" => "/aplicacion/pruebas/index.php",
-    ],
-    [
-        "TEXTO" => "eje. formularios",
-    ]
+    [ 
+       "TEXTO"=> "pruebas",   
+       "ENLACE" =>"./index.php", // Cambiado LINK por ENLACE y ruta relativa
+    ], 
+    [ 
+       "TEXTO"=> "clases"  
+    ] 
 ];
+
+
+$res= filter_var(0x123, FILTER_VALIDATE_INT);
+
+$o=[
+    "options"=> [
+        "min_range"=> 100,
+        "max_range"=> 200,
+        "default"=> 100
+    ],
+    "flags"=> FILTER_FLAG_ALLOW_HEX
+];
+
+$res= filter_var(0x81, FILTER_VALIDATE_INT, $o);
+
 
 //inicializaciones
 $datos = [
@@ -24,6 +39,10 @@ $datos = [
 $errores = [];
 
 
+if (isset($_POST['cr'])) {
+    //verificacion nombre
+
+}
 
 //dibuja la plantilla de la vista
 inicioCabecera("APLICACION PRIMER TRIMESTRE");
@@ -77,13 +96,13 @@ function formulario(array $datos, array $errores)
     <form action="" method="post">    <!-- get o post  -->
         <label for="nombre">Nombre: </label>
         <input type="text" name="nombre" id="nombre"
-            value="<?php echo $datos["nombre"]; ?>" size=21
+            value="<?= $datos["nombre"]; ?>" size=21
             maxlength="20"><br>
         <label for="precio">Precio: </label>
         <input type="text" name="precio" id="precio"
-            value="<?php echo $datos["precio"]; ?>" size=4
+            value="<?= $datos["precio"]; ?>" size=4
             maxlength="3"><br>
-        <input type="submit" class="boton" value="Crear">
+        <input type="submit" class="boton" value="Crear" name="cr">
     </form>
 <?php
 }

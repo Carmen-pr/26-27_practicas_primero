@@ -2,30 +2,32 @@
 
 function paginaError($mensaje)
 {
-  header("HTTP/1.0 404 $mensaje");
-  inicioCabecera("PRACTICA");
-  finCabecera();
-  inicioCuerpo("ERROR");
-  echo "<br />\n";
-  echo $mensaje;
-  echo "<br />\n";
-  echo "<br />\n";  echo "<br />\n";
-  echo "<a href='/index.php'>Ir a la pagina principal</a>\n";
-  
-  finCuerpo();  
+    header("HTTP/1.0 404 $mensaje");
+    inicioCabecera("PRACTICA");
+    finCabecera();
+    inicioCuerpo("ERROR");
+    echo "<br />\n";
+    echo $mensaje;
+    echo "<br />\n";
+    echo "<br />\n";
+    echo "<br />\n";
+    echo "<a href='/index.php'>Ir a la pagina principal</a>\n";
+
+    finCuerpo();
 }
 
 function inicioCabecera($titulo)
 {
 ?>
-<!DOCTYPE html>
-<html lang="es">
+    <!DOCTYPE html>
+    <html lang="es">
+
     <head>
         <meta charset="utf-8">
 
         <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
         Remove this if you use the .htaccess -->
-            <meta http-equiv="X-UA-Compatible"  content="IE=edge,chrome=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
         <title><?php echo $titulo ?></title>
         <meta name="description" content="">
@@ -36,38 +38,39 @@ function inicioCabecera($titulo)
         <!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
         <link rel="shortcut icon" href="/favicon.ico">
         <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-        
+
         <link rel="stylesheet" type="text/css" href="/estilos/base.css">
-<?php
+    <?php
 }
 
 function finCabecera()
 {
-?>
+    ?>
     </head>
-<?php   
+<?php
 }
 
-function inicioCuerpo(string $cabecera, array $ubicacion=[])
+function inicioCuerpo(string $cabecera, array $ubicacion = [])
 {
     global $acceso;
 
 ?>
+
     <body>
 
         <div id="documento">
-        
-            <header>
-            <!-- Esta es la imagen del punto seguro -->
-            <a href="/index.php" id="punto-seguro">
-                <img src="/img/punto_seguro.png" alt="Ir al inicio" width="40">
-            </a>
 
-                <h1 id="titulo"><?php echo $cabecera;?></h1>
+            <header>
+                <!-- Esta es la imagen del punto seguro -->
+                <a href="/index.php" id="punto-seguro">
+                    <img src="/img/punto_seguro.png" alt="Ir al inicio" width="40">
+                </a>
+
+                <h1 id="titulo"><?php echo $cabecera; ?></h1>
             </header>
-            
+
             <div id="barraLogin">
-                
+
             </div>
             <div id="barraMenu">
                 <ul>
@@ -78,37 +81,34 @@ function inicioCuerpo(string $cabecera, array $ubicacion=[])
                     <li><a href="/aplicacion/Relacion3/index.php">Relación 3</a></li>
                     <li><a href="/aplicacion/Relacion4/index.php">Relación 4</a></li>
                     <li><a href="/aplicacion/Relacion5/index.php">Relación 5</a></li>
-                    
-                 </ul> 
-                
+                    <li><a href="/aplicacion/Relacion7/index.php">Relación 7</a></li>
+
+                </ul>
+
             </div>
             <div id="barraUbicacion">
-                  <?php
-                  if ($ubicacion)
-                    {
-                        
+                <?php
+                if ($ubicacion) {
 
-                        foreach($ubicacion as $elemento)
-                            {
-                                if (isset($elemento["ENLACE"]))
-                                    {
-                                        echo "<a href='{$elemento["ENLACE"]}' >";
-                                    }
-                                echo $elemento["TEXTO"];
-                               
 
-                                if (isset($elemento["ENLACE"]))
-                                    {
-                                        echo "</a>";
-                                    }
+                    foreach ($ubicacion as $elemento) {
+                        if (isset($elemento["ENLACE"])) {
+                            echo "<a href='{$elemento["ENLACE"]}' >";
+                        }
+                        echo $elemento["TEXTO"];
 
-                                 if (isset($elemento["ADICIONAL"]))
-                                            echo $elemento["ADICIONAL"];
-                                           else
-                                            echo "&nbsp;&nbsp;";
-                                    
-                                //otra solucion
-/*                                if (isset($elemento["ENLACE"]))
+
+                        if (isset($elemento["ENLACE"])) {
+                            echo "</a>";
+                        }
+
+                        if (isset($elemento["ADICIONAL"]))
+                            echo $elemento["ADICIONAL"];
+                        else
+                            echo "&nbsp;&nbsp;";
+
+                        //otra solucion
+                        /*                                if (isset($elemento["ENLACE"]))
                                     {
                                         echo "<a href='{$elemento["ENLACE"]}' >";
                                         echo $elemento["TEXTO"];
@@ -127,33 +127,33 @@ function inicioCuerpo(string $cabecera, array $ubicacion=[])
                                             echo "&nbsp;&nbsp;";
                                  
                                     }
-*/                                
-
-                            }
+*/
                     }
+                }
 
 
-                    ?>
+                ?>
             </div>
-            
-            <div>
-<?php   
-}
 
-function finCuerpo()
-{
-?>
+            <div>
+            <?php
+        }
+
+        function finCuerpo()
+        {
+            ?>
                 <br />
                 <br />
             </div>
             <footer>
-                <hr width="90%"  />  
+                <hr width="90%" />
                 <div>
-                    &copy; Copyright  by Carmen
+                    &copy; Copyright by Carmen
                 </div>
             </footer>
         </div>
     </body>
-</html>
+
+    </html>
 <?php
-}
+        }
